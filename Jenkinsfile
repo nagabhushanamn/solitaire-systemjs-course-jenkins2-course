@@ -32,7 +32,7 @@ node {
     step([$class: 'JUnitResultArchiver', 
           testResults: 'test-results/**/test-results.xml'])
 
-    //emailNotify('success')  
+    emailNotify('success')  
 
     }catch(err){
         //emailNotify('Failed');
@@ -81,11 +81,10 @@ def runTests(browser) {
 
 
 node {
-    //emailNotify("Deploy to staging?")
+    emailNotify("Deploy to staging?")
 }
 
 input 'Deploy to staging?'
-
 
 
 // limit concurrency so we don't perform simultaneous deploys
@@ -99,9 +98,9 @@ node {
     
     // deploy to a docker container mapped to port 3000
     // on windows use: bat 'docker-compose up -d --build'
-    //sh 'docker-compose up -d --build'
+    sh 'docker-compose up -d --build'
 
-    // Do This
+    // Archive it
     
     
     //emailNotify 'Solitaire Deployed!'
