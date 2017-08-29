@@ -41,19 +41,42 @@ node {
 }
 
 
-node('mac'){
+// demoing a second agent
+
+// node('mac'){
    
-     // on windows use: bat 'dir'
-    sh 'ls'
+//      // on windows use: bat 'dir'
+//     sh 'ls'
 
-    // on windows use: bat 'del /S /Q *'
-    sh 'rm -rf *'
+//     // on windows use: bat 'del /S /Q *'
+//     sh 'rm -rf *'
 
-    unstash 'everything'
+//     unstash 'everything'
 
-    // on windows use: bat 'dir'
-    sh 'ls'
+//     // on windows use: bat 'dir'
+//     sh 'ls'
+// }
 
+
+parallel chrome: {
+    runTests("Chrome")
+}, firefox: {
+    runTests("Firefox")
+}, safari: {
+    runTests("Safari")
+}
+
+
+def runTests(browser) {
+    node('mac') {
+        // on windows use: bat 'del /S /Q *'
+        sh 'rm -rf *'
+        unstash 'everything'
+        // on windows use: bat "npm run test-single-run -- --browsers ${browser}"
+        sh "npm run test-single-run -- --browsers ${browser}"
+        step([$class: 'JUnitResultArchiver', 
+              testResults: 'test-results/**/test-results.xml'])
+    }
 }
 
 
