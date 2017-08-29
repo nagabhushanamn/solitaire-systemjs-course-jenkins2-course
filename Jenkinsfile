@@ -25,8 +25,8 @@ node {
     // test with PhantomJS for "fast" "generic" results
     // on windows use: bat 'npm run test-single-run -- --browsers PhantomJS'
     sh 'npm run test-single-run -- --browsers PhantomJS'
-    sh 'npm run test-single-run -- --browsers Chrome'
-    sh 'npm run test-single-run -- --browsers Firefox'
+    //sh 'npm run test-single-run -- --browsers Chrome'
+    //sh 'npm run test-single-run -- --browsers Firefox'
     
     // archive karma test results (karma is configured to export junit xml files)
     step([$class: 'JUnitResultArchiver', 
@@ -102,6 +102,7 @@ node {
     //sh 'docker-compose up -d --build'
 
     // Do This
+    
     
     //emailNotify 'Solitaire Deployed!'
 }
