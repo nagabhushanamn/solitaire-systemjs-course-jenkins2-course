@@ -101,7 +101,7 @@ node {
     // on windows use: bat 'docker-compose up -d --build'
     sh 'docker-compose up -d --build'
     
-    notify 'Solitaire Deployed!'
+    emailNotify 'Solitaire Deployed!'
 }
 
 
