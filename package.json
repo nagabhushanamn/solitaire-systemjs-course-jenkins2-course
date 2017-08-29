@@ -25,7 +25,7 @@
     "start": "http-server -c-1 -o",
     "pretest": "npm install",
     "test": "karma start karma.conf.js",
-    "test-single-run": "karma start karma.conf.js --single-run",
+    "test-single-run": "karma start karma.conf.js --single-run --browsers PhantomJS",
     "test-chrome": "karma start karma.conf.js --single-run --browsers Chrome"
   }
 }
