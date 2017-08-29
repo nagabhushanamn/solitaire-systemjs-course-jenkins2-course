@@ -4,6 +4,8 @@
 stage 'CI'
 node {
     emailNotify('started')
+    
+    try{
     //checkout scm
     git branch: 'master', 
         url: 'https://github.com/nagabhushanam/solitaire-systemjs-course-jenkins2-course'
@@ -29,7 +31,12 @@ node {
     step([$class: 'JUnitResultArchiver', 
           testResults: 'test-results/**/test-results.xml'])
 
-    emailNotify('success')      
+    emailNotify('success')  
+
+    }catch(err){
+        emailNotify('Failed');
+        currentBuild.result = 'FAILURE'
+    }    
 }
 
 
