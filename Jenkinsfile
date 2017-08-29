@@ -3,7 +3,7 @@
 
 stage 'CI'
 node {
-
+    emailNotify('started')
     //checkout scm
     git branch: 'master', 
         url: 'https://github.com/nagabhushanamn/solitaire-systemjs-course-jenkins2-course'
@@ -28,5 +28,17 @@ node {
     // archive karma test results (karma is configured to export junit xml files)
     step([$class: 'JUnitResultArchiver', 
           testResults: 'test-results/**/test-results.xml'])
-          
+
+    emailNotify('success')      
+}
+
+
+
+def emailNotify(status){
+    emailext (
+      to: "nag@gmail.com",
+      subject: "${status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+      body: """<p>${status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+               <p>Check console output at <a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>""",
+    )
 }
