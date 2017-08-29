@@ -8,7 +8,7 @@ node {
     try{
     //checkout scm
     git branch: 'master', 
-        url: 'https://github.com/nagabhushanam/solitaire-systemjs-course-jenkins2-course'
+        url: 'https://github.com/nagabhushanamn/solitaire-systemjs-course-jenkins2-course'
 
     // pull dependencies from npm
     // on windows use: bat 'npm install'
