@@ -81,7 +81,7 @@ def runTests(browser) {
 
 
 node {
-    emailNotify("Deploy to staging?")
+    //emailNotify("Deploy to staging?")
 }
 
 input 'Deploy to staging?'
@@ -99,9 +99,11 @@ node {
     
     // deploy to a docker container mapped to port 3000
     // on windows use: bat 'docker-compose up -d --build'
-    sh 'docker-compose up -d --build'
+    //sh 'docker-compose up -d --build'
+
+    // Do This
     
-    emailNotify 'Solitaire Deployed!'
+    //emailNotify 'Solitaire Deployed!'
 }
 
 
