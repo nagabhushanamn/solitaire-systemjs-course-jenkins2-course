@@ -2,6 +2,7 @@
 
 
 stage 'CI'
+
 node {
     //emailNotify('started')
     
@@ -37,6 +38,22 @@ node {
         //emailNotify('Failed');
         currentBuild.result = 'FAILURE'
     }    
+}
+
+
+node('mac'){
+   
+     // on windows use: bat 'dir'
+    sh 'ls'
+
+    // on windows use: bat 'del /S /Q *'
+    sh 'rm -rf *'
+
+    unstash 'everything'
+
+    // on windows use: bat 'dir'
+    sh 'ls'
+
 }
 
 
