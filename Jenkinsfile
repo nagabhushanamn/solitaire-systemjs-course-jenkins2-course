@@ -80,6 +80,13 @@ def runTests(browser) {
 }
 
 
+node {
+    emailNotify("Deploy to staging?")
+}
+
+input 'Deploy to staging?'
+
+
 
 def emailNotify(status){
     emailext (
