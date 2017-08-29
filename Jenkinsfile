@@ -3,7 +3,7 @@
 
 stage 'CI'
 node {
-    emailNotify('started')
+    //emailNotify('started')
     
     try{
     //checkout scm
@@ -31,10 +31,10 @@ node {
     step([$class: 'JUnitResultArchiver', 
           testResults: 'test-results/**/test-results.xml'])
 
-    emailNotify('success')  
+    //emailNotify('success')  
 
     }catch(err){
-        emailNotify('Failed');
+        //emailNotify('Failed');
         currentBuild.result = 'FAILURE'
     }    
 }
